@@ -1,0 +1,110 @@
+[gd_scene load_steps=8 format=3 uid="uid://b43k5yrdj82sb"]
+
+[ext_resource type="Texture2D" uid="uid://cikevibsc761v" path="res://assets/MainMenu.png" id="1_8e3co"]
+[ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_coy14"]
+[ext_resource type="Theme" uid="uid://ilfx3dad2e2i" path="res://assets/themes/UI.tres" id="3_0ev2e"]
+
+[sub_resource type="Animation" id="Animation_sms4n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_amvdk"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4j5nv"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qwpss"]
+_data = {
+"RESET": SubResource("Animation_sms4n"),
+"fade_in": SubResource("Animation_amvdk"),
+"fade_out": SubResource("Animation_4j5nv")
+}
+
+[node name="Main Menu" type="CanvasLayer"]
+script = ExtResource("1_coy14")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_8e3co")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 137.0
+offset_top = -680.0
+offset_right = 768.0
+offset_bottom = -123.0
+grow_vertical = 0
+theme_override_constants/separation = 15
+
+[node name="StartButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_0ev2e")
+text = "START DEBUGGING"
+
+[node name="ExitButton" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_0ev2e")
+text = "EXIT PROGRAM"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qwpss")
+}
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[connection signal="button_up" from="Control/VBoxContainer/StartButton" to="." method="_on_start_button_up"]
+[connection signal="button_up" from="Control/VBoxContainer/ExitButton" to="." method="_on_exit_button_up"]

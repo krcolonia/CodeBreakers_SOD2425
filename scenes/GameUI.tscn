@@ -1,0 +1,194 @@
+[gd_scene load_steps=14 format=3 uid="uid://8ofg21kliimr"]
+
+[ext_resource type="Texture2D" uid="uid://oplx0t44ctgo" path="res://assets/CodingUI.png" id="1_jeftf"]
+[ext_resource type="Script" path="res://scripts/menus/game_ui.gd" id="1_rusku"]
+[ext_resource type="FontFile" uid="uid://bcffos3vtjsm8" path="res://assets/fonts/monogram-extended.ttf" id="2_vlheq"]
+[ext_resource type="Theme" uid="uid://ilfx3dad2e2i" path="res://assets/themes/UI.tres" id="3_a78u4"]
+[ext_resource type="FontFile" uid="uid://cnb1yjdfclxiu" path="res://assets/fonts/Saved by Zero Rg.otf" id="5_fidgq"]
+[ext_resource type="Texture2D" uid="uid://b7lwsvaebec0g" path="res://assets/Buttons_Outline.png" id="6_4uwed"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tcgr6"]
+bg_color = Color(0, 0, 0, 0.705882)
+
+[sub_resource type="Animation" id="Animation_g56qw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_iawvf"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_n4h3v"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_13rra"]
+_data = {
+"RESET": SubResource("Animation_g56qw"),
+"fade_in": SubResource("Animation_iawvf"),
+"fade_out": SubResource("Animation_n4h3v")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3llf4"]
+bg_color = Color(0, 0, 0, 0.490196)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_th1gk"]
+texture = ExtResource("6_4uwed")
+texture_margin_left = 62.0
+texture_margin_top = 62.0
+texture_margin_right = 62.0
+texture_margin_bottom = 62.0
+modulate_color = Color(0, 0.87451, 0.87451, 1)
+
+[node name="GameUi" type="CanvasLayer"]
+script = ExtResource("1_rusku")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_jeftf")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 135
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CodeEdit" type="CodeEdit" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_vlheq")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_tcgr6")
+theme_override_colors/line_number_color = Color(1, 1, 1, 1)
+gutters_draw_line_numbers = true
+code_completion_enabled = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+theme_override_constants/margin_right = 180
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_a78u4")
+text = "Check Code"
+
+[node name="QuestionNo" type="Label" parent="."]
+offset_left = 103.0
+offset_top = 42.0
+offset_right = 292.0
+offset_bottom = 127.0
+theme_override_fonts/font = ExtResource("2_vlheq")
+theme_override_font_sizes/font_size = 91
+text = "#"
+vertical_alignment = 1
+
+[node name="TriesLabel" type="Label" parent="."]
+offset_left = 217.0
+offset_top = 65.0
+offset_right = 814.0
+offset_bottom = 122.0
+theme_override_fonts/font = ExtResource("5_fidgq")
+theme_override_font_sizes/font_size = 46
+text = "Tries Left: "
+vertical_alignment = 1
+
+[node name="PointsLabel" type="Label" parent="."]
+offset_left = 1303.0
+offset_top = 65.0
+offset_right = 1900.0
+offset_bottom = 122.0
+theme_override_fonts/font = ExtResource("5_fidgq")
+theme_override_font_sizes/font_size = 46
+text = "Points: "
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_13rra")
+}
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="LoadingCodePanel" type="Panel" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3llf4")
+
+[node name="MarginContainer" type="MarginContainer" parent="LoadingCodePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 500
+theme_override_constants/margin_top = 250
+theme_override_constants/margin_right = 500
+theme_override_constants/margin_bottom = 250
+
+[node name="RichTextLabel" type="Label" parent="LoadingCodePanel/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.87451, 0.87451, 1)
+theme_override_fonts/font = ExtResource("5_fidgq")
+theme_override_font_sizes/font_size = 66
+theme_override_styles/normal = SubResource("StyleBoxTexture_th1gk")
+text = "COmpiling..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_up" from="MarginContainer/VBoxContainer/MarginContainer/Button" to="." method="_on_run_code_button_up"]

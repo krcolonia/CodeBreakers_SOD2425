@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm5b7tpsjgis5"]
+
+[ext_resource type="Script" path="res://scripts/menus/win_screen.gd" id="1_1qpq7"]
+[ext_resource type="Texture2D" uid="uid://brioueily5dje" path="res://assets/WinScreen.png" id="1_by0hy"]
+
+[node name="WinScreen" type="CanvasLayer"]
+script = ExtResource("1_1qpq7")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_by0hy")

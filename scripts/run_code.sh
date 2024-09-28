@@ -1,0 +1,1 @@
+echo $(python C:\Users\kurut0\AppData\Roaming\Godot\app_userdata\SITES SOD DebuggingGame\game_test.py) | tr -d '\r'

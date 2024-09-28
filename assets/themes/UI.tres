@@ -1,0 +1,47 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://ilfx3dad2e2i"]
+
+[ext_resource type="FontFile" uid="uid://cnb1yjdfclxiu" path="res://assets/fonts/Saved by Zero Rg.otf" id="1_6g4w0"]
+[ext_resource type="Texture2D" uid="uid://b7lwsvaebec0g" path="res://assets/Buttons_Outline.png" id="1_i71t2"]
+[ext_resource type="FontFile" uid="uid://b6muvyba22rfd" path="res://assets/fonts/Apestron Trial Version.ttf" id="1_npcnj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oapy2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c7l88"]
+texture = ExtResource("1_i71t2")
+texture_margin_left = 62.0
+texture_margin_top = 62.0
+texture_margin_right = 62.0
+texture_margin_bottom = 62.0
+modulate_color = Color(1.13589e-05, 0.932929, 0.932929, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_37i4e"]
+texture = ExtResource("1_i71t2")
+texture_margin_left = 62.0
+texture_margin_top = 62.0
+texture_margin_right = 62.0
+texture_margin_bottom = 62.0
+modulate_color = Color(0, 0.87451, 0.87451, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mmvvy"]
+texture = ExtResource("1_i71t2")
+texture_margin_left = 62.0
+texture_margin_top = 62.0
+texture_margin_right = 62.0
+texture_margin_bottom = 62.0
+modulate_color = Color(0, 0.87451, 0.87451, 1)
+
+[resource]
+Button/colors/font_color = Color(0, 0.87451, 0.87451, 1)
+Button/colors/font_focus_color = Color(0, 0.87451, 0.87451, 1)
+Button/colors/font_hover_color = Color(0, 0.933333, 0.933333, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0.87451, 0.87451, 1)
+Button/colors/font_pressed_color = Color(0, 0.87451, 0.87451, 1)
+Button/font_sizes/font_size = 40
+Button/fonts/font = ExtResource("1_6g4w0")
+Button/styles/focus = SubResource("StyleBoxEmpty_oapy2")
+Button/styles/hover = SubResource("StyleBoxTexture_c7l88")
+Button/styles/normal = SubResource("StyleBoxTexture_37i4e")
+Button/styles/pressed = SubResource("StyleBoxTexture_mmvvy")
+RichTextLabel/colors/default_color = Color(0.942072, 0.735351, 2.31028e-06, 1)
+RichTextLabel/font_sizes/normal_font_size = 46
+RichTextLabel/fonts/normal_font = ExtResource("1_npcnj")
